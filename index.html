@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaanee Tripathi - Computer Science Student & Accessibility Advocate</title>
+    <meta name="description" content="Portfolio of Vaanee Tripathi, Computer Science student at Ashoka University specializing in accessibility, inclusive design, and innovative technology solutions.">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Vaanee Tripathi - Portfolio">
+    <meta property="og:description" content="Computer Science student specializing in accessibility and inclusive design">
+    <meta property="og:type" content="website">
+    
+    <!-- Accessibility & Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Custom Properties for Design System */
+        :root {
+            --color-bittersweet: #FF595E;
+            --color-sunglow: #FFCA3A;
+            --color-yellow-green: #93D716;
+            --color-chrysler-blue: #502AC3;
+            --color-snow: #FEF5F5;
+            --color-smoky-black: #0B0A07;
+            --color-raisin-black: #2E2424;
+            --color-white: #FFFFFF;
+            
+            --border-radius-sm: 8px;
+            --border-radius-md: 16px;
+            --border-radius-lg: 24px;
+            --border-radius-xl: 32px;
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3rem;
+            
+            --transition-fast: 0.15s ease-in-out;
+            --transition-normal: 0.3s ease-in-out;
+            --transition-slow: 0.5s ease-in-out;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Jost', 'Arial', 'Helvetica', sans-serif;
+        }
+
+        /* Headings use Libre Caslon Text */
+        h1, h2, h3, h4, h5, h6,
+        .main-title,
+        .section-title,
+        .name-first,
+        .name-last {
+            font-family: 'Libre Caslon Text', 'Georgia', 'Times New Roman', serif !important;
+        }
+
+        /* Body text uses Jost */
+        body, p, span, div, a, li, button, input, textarea {
+            font-family: 'Jost', 'Arial', 'Helvetica', sans-serif !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: 'Jost', 'Arial', 'Helvetica', sans-serif;
+            background-color: var(--color-smoky-black);
+            color: var(--color-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--color-sunglow);
+            color: var(--color-smoky-black);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: var(--border-radius-sm);
+            font-weight: 600;
+            z-index: 1000;
+            transition: top var(--transition-fast);
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            top: var(--spacing-md);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-smoky-black);
+            border: 3px solid var(--color-white);
+            border-radius: var(--border-radius-lg);
+            z-index: 100;
+            padding: var(--spacing-sm) var(--spacing-md);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            font-family: 'Jost', 'Arial', 'Helvetica', sans-serif !important;
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 400;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            transition: all var(--transition-normal);
+            position: relative;
+            text-transform: lowercase;
+            font-size: var(--font-size-base);
+        }
+
+        .nav-link:hover,
+        .nav-link:focus {
+            outline: 2px solid var(--color-white);
+            outline-offset: 2px;
+        }
+
+        .nav-link.active.home {
+            color: var(--color-white);
+        }
+
+        .nav-link.active.about {
+            color: var(--color-bittersweet);
+        }
+
+        .nav-link.active.works {
+            color: var(--color-sunglow);
+        }
+
+        .nav-link.active.resume {
+            color: var(--color-yellow-green);
+        }
+
+        .nav-link.active.contact {
+            color: var(--color-chrysler-blue);
+        }
+
+        /* Page Container */
+        .page-container {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            position: relative;
+        }
+
+        .section-content {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Home Section */
+        .home-section {
+            background: var(--color-smoky-black);
+        }
+
+        .home-card {
+            background: var(--color-smoky-black);
+            border: 4px solid var(--color-white);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-2xl) var(--spacing-xl);
+            position: relative;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .home-card::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            border: 2px solid var(--color-white);
+            border-radius: calc(var(--border-radius-xl) - 8px);
+            pointer-events: none;
+        }
+
+        .home-card::after {
+            content: '';
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            right: 32px;
+            bottom: 32px;
+            border: 1px solid var(--color-white);
+            border-radius: calc(var(--border-radius-xl) - 16px);
+            pointer-events: none;
+        }
+
+        .main-title {
+            font-family: 'Libre Caslon Text', 'Georgia', 'Times New Roman', serif !important;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 400;
+            margin-bottom: var(--spacing-xl);
+            position: relative;
+            z-index: 1;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .name-first {
+            display: block;
+            margin-bottom: 0;
+            font-family: 'Libre Caslon Text', 'Georgia', 'Times New Roman', serif !important;
+        }
+
+        .name-last {
+            display: block;
+            margin-top: -0.2em;
+            font-family: 'Libre Caslon Text', 'Georgia', 'Times New Roman', serif !important;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-2xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-link {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all var(--transition-normal);
+            font-size: var(--font-size-xl);
+            border: 2px solid transparent;
+            font-weight: 600;
+        }
+
+        .social-link:focus {
+            outline: 3px solid var(--color-white);
+            outline-offset: 4px;
+        }
+
+        .social-link.download {
+            background: var(--color-sunglow);
+            color: var(--color-smoky-black);
+        }
+
+        .social-link.github {
+            background: var(--color-bittersweet);
+            color: var(--color-white);
+        }
+
+        .social-link.linkedin {
+            background: var(--color-yellow-green);
+            color: var(--color-smoky-black);
+        }
+
+        .social-link.email {
+            background: var(--color-chrysler-blue);
+            color: var(--color-white);
+        }
+
+        .social-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--color-smoky-black);
+        }
+
+        .section-title {
+            font-family: 'Libre Caslon Text', 'Georgia', 'Times New Roman', serif !important;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: var(--spacing-2xl);
+            position: relative;
+            display: inline-block;
+            text-transform: capitalize;
+        }
+
+        .section-title.about-title {
+            color: var(--color-bittersweet);
+            text-shadow: 
+                -2px -2px 0 var(--color-smoky-black),
+                2px -2px 0 var(--color-smoky-black),
+                -2px 2px 0 var(--color-smoky-black),
+                2px 2px 0 var(--color-smoky-black),
+                -3px 0 0 var(--color-smoky-black),
+                3px 0 0 var(--color-smoky-black),
+                0 -3px 0 var(--color-smoky-black),
+                0 3px 0 var(--color-smoky-black);
+        }
+
+        .about-content {
+            background: var(--color-smoky-black);
+            border: 4px solid var(--color-bittersweet);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-2xl);
+            text-align: left;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-family: 'Jost', sans-serif;
+            font-size: var(--font-size-lg);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-white);
+        }
+
+        .about-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-highlight {
+            color: var(--color-bittersweet);
+            font-weight: 600;
+        }
+
+        /* Works Section */
+        .works-section {
+            background: var(--color-smoky-black);
+        }
+
+        .section-title.works-title {
+            color: var(--color-sunglow);
+            text-shadow: 
+                -2px -2px 0 var(--color-smoky-black),
+                2px -2px 0 var(--color-smoky-black),
+                -2px 2px 0 var(--color-smoky-black),
+                2px 2px 0 var(--color-smoky-black),
+                -3px 0 0 var(--color-smoky-black),
+                3px 0 0 var(--color-smoky-black),
+                0 -3px 0 var(--color-smoky-black),
+                0 3px 0 var(--color-smoky-black);
+        }
+
+        .works-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .work-category {
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .work-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-title {
+            font-family: 'Jost', sans-serif;
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-white);
+            text-align: left;
+        }
+
+        .project-card {
+            background: var(--color-smoky-black);
+            border: 4px solid var(--color-sunglow);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-card:hover,
+        .project-card:focus {
+            transform: translateY(-4px);
+            outline: 3px solid var(--color-sunglow);
+            outline-offset: 4px;
+        }
+
+        .project-title {
+            font-family: 'Jost', sans-serif;
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-sunglow);
+        }
+
+        .project-description {
+            font-family: 'Jost', sans-serif;
+            color: var(--color-white);
+            line-height: 1.6;
+        }
+
+        /* Resume Section */
+        .resume-section {
+            background: var(--color-smoky-black);
+        }
+
+        .section-title.resume-title {
+            color: var(--color-yellow-green);
+            text-shadow: 
+                -2px -2px 0 var(--color-smoky-black),
+                2px -2px 0 var(--color-smoky-black),
+                -2px 2px 0 var(--color-smoky-black),
+                2px 2px 0 var(--color-smoky-black),
+                -3px 0 0 var(--color-smoky-black),
+                3px 0 0 var(--color-smoky-black),
+                0 -3px 0 var(--color-smoky-black),
+                0 3px 0 var(--color-smoky-black);
+        }
+
+        .resume-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--spacing-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .resume-sidebar {
+            background: var(--color-smoky-black);
+            border: 4px solid var(--color-yellow-green);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+        }
+
+        .resume-main {
+            background: var(--color-smoky-black);
+            border: 4px solid var(--color-yellow-green);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+        }
+
+        .resume-section-title {
+            font-family: 'Jost', sans-serif;
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-yellow-green);
+        }
+
+        .resume-item {
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .resume-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .resume-item-title {
+            font-family: 'Jost', sans-serif;
+            font-weight: 600;
+            color: var(--color-white);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .resume-item-subtitle {
+            font-family: 'Jost', sans-serif;
+            color: var(--color-yellow-green);
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+            font-size: var(--font-size-sm);
+        }
+
+        .resume-item-description {
+            font-family: 'Jost', sans-serif;
+            color: var(--color-white);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--color-smoky-black);
+        }
+
+        .section-title.contact-title {
+            color: var(--color-chrysler-blue);
+            text-shadow: 
+                -2px -2px 0 var(--color-white),
+                2px -2px 0 var(--color-white),
+                -2px 2px 0 var(--color-white),
+                2px 2px 0 var(--color-white),
+                -3px 0 0 var(--color-white),
+                3px 0 0 var(--color-white),
+                0 -3px 0 var(--color-white),
+                0 3px 0 var(--color-white);
+        }
+
+        .contact-content {
+            background: var(--color-smoky-black);
+            border: 4px solid var(--color-chrysler-blue);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-2xl);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            font-family: 'Jost', sans-serif;
+            font-size: var(--font-size-lg);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-xl);
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-item {
+            font-family: 'Jost', sans-serif;
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            color: var(--color-white);
+            text-decoration: none;
+            transition: color var(--transition-normal);
+            padding: var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-item:hover,
+        .contact-item:focus {
+            color: var(--color-chrysler-blue);
+            outline: 3px solid var(--color-chrysler-blue);
+            outline-offset: 2px;
+        }
+
+        .contact-icon {
+            margin-right: var(--spacing-md);
+            font-size: var(--font-size-xl);
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: var(--spacing-sm) 0;
+            }
+            
+            .nav-list {
+                gap: var(--spacing-md);
+            }
+            
+            .nav-link {
+                padding: var(--spacing-xs) var(--spacing-sm);
+                font-size: var(--font-size-sm);
+            }
+
+            .page-container {
+                margin-top: 80px;
+            }
+
+            .section {
+                padding: var(--spacing-xl) var(--spacing-md);
+            }
+
+            .home-card {
+                padding: var(--spacing-xl) var(--spacing-lg);
+            }
+
+            .social-links {
+                gap: var(--spacing-md);
+            }
+
+            .social-link {
+                width: 48px;
+                height: 48px;
+                font-size: var(--font-size-lg);
+            }
+
+            .resume-layout {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+
+            .about-content,
+            .contact-content,
+            .resume-sidebar,
+            .resume-main {
+                padding: var(--spacing-lg);
+            }
+
+            .project-card {
+                padding: var(--spacing-lg);
+            }
+
+            .section-title {
+                margin-bottom: var(--spacing-xl);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-list {
+                gap: var(--spacing-sm);
+            }
+
+            .nav-link {
+                padding: var(--spacing-xs);
+                font-size: var(--font-size-sm);
+            }
+
+            .page-container {
+                margin-top: 70px;
+            }
+
+            .section {
+                padding: var(--spacing-lg) var(--spacing-sm);
+            }
+
+            .main-title {
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .section-title {
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .home-card {
+                padding: var(--spacing-lg);
+            }
+
+            .home-card::before,
+            .home-card::after {
+                display: none;
+            }
+
+            .social-links {
+                gap: var(--spacing-sm);
+            }
+
+            .social-link {
+                width: 44px;
+                height: 44px;
+            }
+
+            .about-content,
+            .contact-content,
+            .project-card {
+                padding: var(--spacing-md);
+            }
+
+            .works-content {
+                max-width: 100%;
+            }
+        }
+
+        /* Focus Indicators for Better Accessibility */
+        *:focus {
+            outline: 2px solid var(--color-sunglow);
+            outline-offset: 2px;
+        }
+
+        /* Print Styles */
+        @media print {
+            .nav-container,
+            .social-links {
+                display: none;
+            }
+            
+            .section {
+                min-height: auto;
+                page-break-inside: avoid;
+            }
+            
+            body {
+                background: white;
+                color: black;
+            }
+        }
+
+        /* High Contrast Mode Support */
+        @media (prefers-contrast: high) {
+            :root {
+                --color-smoky-black: #000000;
+                --color-white: #FFFFFF;
+            }
+            
+            .nav-container {
+                background: #000000;
+                border-bottom: 2px solid #FFFFFF;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Screen Readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="nav-container" aria-label="Main navigation">
+        <div class="nav">
+            <ul class="nav-list" role="list">
+                <li><a href="#home" class="nav-link active home" aria-current="page">home</a></li>
+                <li><a href="#about" class="nav-link about">about</a></li>
+                <li><a href="#works" class="nav-link works">works&projects</a></li>
+                <li><a href="#resume" class="nav-link resume">resume</a></li>
+                <li><a href="#contact" class="nav-link contact">contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="page-container">
+        <!-- Home Section -->
+        <section id="home" class="section home-section" aria-label="Introduction">
+            <div class="section-content">
+                <div class="home-card">
+                    <h1 class="main-title">
+                        <span class="name-first">Vaanee</span>
+                        <span class="name-last">Tripathi</span>
+                    </h1>
+                    
+                    <div class="social-links" role="list" aria-label="Social media and contact links">
+                        <a href="#resume" class="social-link download" aria-label="Download resume" title="Download Resume">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/vaaneetripathi" class="social-link github" aria-label="GitHub profile" title="GitHub" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/vaaneetripathi" class="social-link linkedin" aria-label="LinkedIn profile" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:vaanee.tripathi.ug25@ashoka.edu.in" class="social-link email" aria-label="Send email" title="Email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about-section" aria-label="About me">
+            <div class="section-content">
+                <h2 class="section-title about-title">About</h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        I'm a <span class="about-highlight">Computer Science student</span> at Ashoka University, passionate about creating 
+                        <span class="about-highlight">accessible and inclusive technology</span> that makes a meaningful impact in people's lives.
+                    </p>
+                    <p class="about-text">
+                        My work focuses on <span class="about-highlight">accessibility research and development</span>, where I design solutions 
+                        for visually impaired learners and develop tools that make technology more inclusive. From creating tactile learning 
+                        kits to building refreshable dot grids, I believe technology should be accessible to everyone.
+                    </p>
+                    <p class="about-text">
+                        As President of the <span class="about-highlight">Women in Computing Society</span>, I organized India's first student-led 
+                        accessibility tech conference and lead initiatives that foster an inclusive CS community. I'm also a 
+                        <span class="about-highlight">Makerspace mentor</span>, helping students bring their innovative ideas to life through 
+                        hands-on learning and prototyping.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Works & Projects Section -->
+        <section id="works" class="section works-section" aria-label="Works and projects">
+            <div class="section-content">
+                <h2 class="section-title works-title">Works&Projects</h2>
+                <div class="works-content">
+                    <div class="work-category">
+                        <h3 class="category-title">Academic</h3>
+                        <div class="project-card" tabindex="0" role="article">
+                            <h4 class="project-title">Accessible Intro to CS Curriculum</h4>
+                            <p class="project-description">
+                                Comprehensive 5-pronged strategy to improve accessibility in CS education, featuring tactile learning kits 
+                                and inclusive curriculum design validated through user testing with visually impaired students.
+                            </p>
+                        </div>
+                        <div class="project-card" tabindex="0" role="article">
+                            <h4 class="project-title">Refreshable Tactile Dot Grid</h4>
+                            <p class="project-description">
+                                Accepted at ATIA 2025 Conference and HCII International 2025. A frugal device using OpenCV to teach 
+                                visual concepts in mathematics and computer science to visually impaired learners.
+                            </p>
+                        </div>
+                        <div class="project-card" tabindex="0" role="article">
+                            <h4 class="project-title">Web Accessibility Enhancer Tool</h4>
+                            <p class="project-description">
+                                Browser extension leveraging axe-core and generative AI to make non-screen reader-friendly websites 
+                                accessible in real-time, improving web accessibility for users with disabilities.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="work-category">
+                        <h3 class="category-title">Non-academic</h3>
+                        <div class="project-card" tabindex="0" role="article">
+                            <h4 class="project-title">The Air Purifier Project</h4>
+                            <p class="project-description">
+                                Open-source, frugal air purification device designed to make clean air accessible. Features sensor-based 
+                                validation system and focuses on low-cost materials for widespread adoption.
+                            </p>
+                        </div>
+                        <div class="project-card" tabindex="0" role="article">
+                            <h4 class="project-title">Food Health Monitor</h4>
+                            <p class="project-description">
+                                IIT Bombay internship project developing innovative solutions for food spoilage detection and health monitoring. 
+                                Provisional patent pending for this early warning system.
+                            </p>
+                        </div>
+                        <div class="project-card" tabindex="0" role="article">
+                            <h4 class="project-title">GenArt Performance Technology</h4>
+                            <p class="project-description">
+                                Novel artistic medium combining projections, performance, and technology. Led hardware research and 
+                                creative development at the intersection of art and technology.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="section resume-section" aria-label="Resume and qualifications">
+            <div class="section-content">
+                <h2 class="section-title resume-title">Resume</h2>
+                <div class="resume-layout">
+                    <div class="resume-sidebar">
+                        <div class="resume-section-title">Contact</div>
+                        <div class="resume-item">
+                            <div class="resume-item-description">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline; margin-right: 8px;">
+                                    <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                                </svg>99-7116-2648<br>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline; margin-right: 8px;">
+                                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                </svg>vaanee.tripathi.ug25@ashoka.edu.in<br>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline; margin-right: 8px;">
+                                    <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+                                </svg>GitHub: vaaneetripathi<br>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="display: inline; margin-right: 8px;">
+                                    <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
+                                </svg>LinkedIn: vaaneetripathi
+                            </div>
+                        </div>
+
+                        <div class="resume-section-title">Technical Skills</div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Intermediate</div>
+                            <div class="resume-item-description">
+                                Python, C, Robotics, Computer Vision, 3D printing, PCB Design, 
+                                Data Analysis, LaTeX, Technical Writing
+                            </div>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Basic</div>
+                            <div class="resume-item-description">
+                                Machine Learning, OpenGL, Git, FastAPI, HTML/CSS, 
+                                Generative AI, Prompt Engineering
+                            </div>
+                        </div>
+
+                        <div class="resume-section-title">Leadership</div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">President, Women in Computing Society</div>
+                            <div class="resume-item-subtitle">August 2023 - Present</div>
+                            <div class="resume-item-description">
+                                Organized India's first student-led accessibility tech conference with 200+ registrations. 
+                                Leading 40-member team in fostering inclusive CS culture.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resume-main">
+                        <div class="resume-section-title">Education</div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">B.Sc. Computer Science</div>
+                            <div class="resume-item-subtitle">Ashoka University • March 2026 • CGPA: 3.36</div>
+                            <div class="resume-item-description">
+                                Coursework: Data Structures, Machine Learning, Computer Networks, Design Practices in CS, 
+                                Trustworthy AI, Accessibility Research, Frugal Science
+                            </div>
+                        </div>
+
+                        <div class="resume-section-title">Experience</div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Makerspace Intern/Community Mentor</div>
+                            <div class="resume-item-subtitle">Mphasis Ashoka Digital Makerspace • June 2023 - Present</div>
+                            <div class="resume-item-description">
+                                Led curriculum development for undergraduate courses. Mentored students in hardware tools, 
+                                3D printing, and microcontrollers. Contributed to research projects including NCBS collaboration.
+                            </div>
+                        </div>
+                        <div class="resume-item">
+                            <div class="resume-item-title">Project Intern</div>
+                            <div class="resume-item-subtitle">IIT Bombay • June-July 2024</div>
+                            <div class="resume-item-description">
+                                Developed food health monitoring system during intensive 6-week invention program. 
+                                Provisional patent pending for innovative spoilage detection solution.
+                            </div>
+                        </div>
+
+                        <div class="resume-section-title">Key Achievements</div>
+                        <div class="resume-item">
+                            <div class="resume-item-description">
+                                • Poster accepted at ATIA 2025 Conference and HCII International 2025<br>
+                                • Led team of 40 members in Women in Computing Society<br>
+                                • Organized first student-led accessibility tech conference in India<br>
+                                • Developed tactile learning solutions for visually impaired students<br>
+                                • Provisional patent for food health monitoring innovation
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section" aria-label="Contact information">
+            <div class="section-content">
+                <h2 class="section-title contact-title">Reach Out!</h2>
+                <div class="contact-content">
+                    <p class="contact-text">
+                        I'm always excited to collaborate on accessibility projects, discuss inclusive technology, 
+                        or chat about innovative solutions that can make a positive impact. Let's connect!
+                    </p>
+                    
+                    <div class="contact-info">
+                        <a href="mailto:vaanee.tripathi.ug25@ashoka.edu.in" class="contact-item">
+                            <span class="contact-icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                </svg>
+                            </span>
+                            vaanee.tripathi.ug25@ashoka.edu.in
+                        </a>
+                        <a href="mailto:vaaneetripathi@gmail.com" class="contact-item">
+                            <span class="contact-icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                </svg>
+                            </span>
+                            vaaneetripathi@gmail.com
+                        </a>
+                        <a href="tel:+919971162648" class="contact-item">
+                            <span class="contact-icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                                </svg>
+                            </span>
+                            +91 99-7116-2648
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling and navigation management
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update active navigation state
+                        navLinks.forEach(nav => {
+                            nav.classList.remove('active');
+                            nav.removeAttribute('aria-current');
+                        });
+                        this.classList.add('active');
+                        this.setAttribute('aria-current', 'page');
+                    }
+                });
+            });
+
+            // Intersection Observer for active navigation states
+            const observerOptions = {
+                root: null,
+                rootMargin: '-20% 0% -80% 0%',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.getAttribute('id');
+                        const correspondingNav = document.querySelector(`[href="#${sectionId}"]`);
+                        
+                        if (correspondingNav) {
+                            navLinks.forEach(nav => {
+                                nav.classList.remove('active');
+                                nav.removeAttribute('aria-current');
+                            });
+                            correspondingNav.classList.add('active');
+                            correspondingNav.setAttribute('aria-current', 'page');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Enhanced keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    const activeNav = document.querySelector('.nav-link.active');
+                    if (activeNav) {
+                        activeNav.focus();
+                    }
+                }
+            });
+
+            // Add scroll animations
+            const animateElements = document.querySelectorAll('.project-card, .resume-item');
+            
+            const animationObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-on-scroll');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            animateElements.forEach(el => {
+                animationObserver.observe(el);
+            });
+
+            // Handle project card interactions
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                card.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 150);
+                    }
+                });
+
+                card.addEventListener('focus', function() {
+                    this.setAttribute('aria-expanded', 'true');
+                });
+
+                card.addEventListener('blur', function() {
+                    this.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Handle resume download
+            const downloadLink = document.querySelector('.social-link.download');
+            if (downloadLink) {
+                downloadLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.getElementById('resume').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    document.querySelector('[href="#resume"]').classList.add('active');
+                });
+            }
+
+            // Enhanced accessibility features
+            function checkColorContrast() {
+                if (window.matchMedia('(prefers-contrast: high)').matches) {
+                    document.body.classList.add('high-contrast');
+                }
+            }
+
+            checkColorContrast();
+            window.matchMedia('(prefers-contrast: high)').addEventListener('change', checkColorContrast);
+
+            function handleReducedMotion() {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.body.classList.add('reduced-motion');
+                    animationObserver.disconnect();
+                }
+            }
+
+            handleReducedMotion();
+            window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', handleReducedMotion);
+        });
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('Portfolio error:', e.error);
+        });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Vaanee Tripathi",
+        "jobTitle": "Computer Science Student & Accessibility Advocate",
+        "affiliation": {
+            "@type": "EducationalOrganization",
+            "name": "Ashoka University"
+        },
+        "email": "vaanee.tripathi.ug25@ashoka.edu.in",
+        "telephone": "+91-99-7116-2648",
+        "url": "https://vaaneetripathi.github.io",
+        "sameAs": [
+            "https://github.com/vaaneetripathi",
+            "https://linkedin.com/in/vaaneetripathi"
+        ],
+        "knowsAbout": [
+            "Accessibility",
+            "Inclusive Design",
+            "Computer Science",
+            "Assistive Technology",
+            "Web Development"
+        ],
+        "description": "Computer Science student at Ashoka University specializing in accessibility research and inclusive technology development."
+    }
+    </script>
+</body>
+</html>
