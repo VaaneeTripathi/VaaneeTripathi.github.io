@@ -357,6 +357,18 @@
             color: var(--color-chrysler-blue);
         }
 
+        .section-separator {
+            width: 100%;
+            height: 1px;
+            background: #333333;  /* Really dull gray line */
+            margin: 0;
+            border: none;
+        }
+
+        .section-separator.home-separator {
+            margin-top: 80px;  /* Shifts only home separator down */
+        }
+
         .home-content {
             flex: 1;
             display: flex;
@@ -1037,6 +1049,8 @@
             </div>
         </section>
 
+        <hr class="section-separator home-separator" aria-hidden="true">
+
         <!-- About Section -->
         <section id="about" class="section about-section" aria-label="About me">
             <div class="section-content">
@@ -1060,6 +1074,8 @@
                 </div>
             </div>
         </section>
+
+        <hr class="section-separator" aria-hidden="true">
 
         <!-- Works & Projects Section -->
         <section id="works" class="section works-section" aria-label="Works and projects">
@@ -1118,6 +1134,8 @@
                 </div>
             </div>
         </section>
+
+        <hr class="section-separator" aria-hidden="true">
 
         <!-- Resume Section -->
         <section id="resume" class="section resume-section" aria-label="Resume and qualifications">
@@ -1214,6 +1232,8 @@
             </div>
         </section>
 
+        <hr class="section-separator" aria-hidden="true">
+
         <!-- Contact Section -->
         <section id="contact" class="section contact-section" aria-label="Contact information">
             <div class="section-content">
@@ -1253,6 +1273,9 @@
                 </div>
             </div>
         </section>
+
+        <hr class="section-separator" aria-hidden="true">
+
     </main>
 
     <script>
