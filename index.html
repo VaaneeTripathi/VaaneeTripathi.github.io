@@ -121,7 +121,7 @@
         /* Navigation Styles */
         .nav-container {
             position: fixed;
-            top: var(--spacing-md);
+            top: var(--spacing-lg);
             left: 50%;
             transform: translateX(-50%);
             background: var(--color-smoky-black);
@@ -129,6 +129,13 @@
             border-radius: var(--border-radius-lg);
             z-index: 100;
             padding: var(--spacing-sm) var(--spacing-md);
+            transition: all var(--transition-normal);
+        }
+
+        /* Hide fixed nav when on home section */
+        .nav-container.on-home {
+            opacity: 0;
+            pointer-events: none;
         }
 
         .nav {
@@ -186,8 +193,8 @@
 
         /* Page Container */
         .page-container {
-            margin-top: 100px;
-            min-height: calc(100vh - 100px);
+            margin-top: 0;
+            min-height: 100vh;
         }
 
         /* Section Styles */
@@ -196,12 +203,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: var(--spacing-2xl) var(--spacing-lg);
+            padding: var(--spacing-xl) var(--spacing-md);
             position: relative;
         }
 
         .section-content {
-            max-width: 1000px;
+            max-width: 1200px;
             width: 100%;
             text-align: center;
         }
@@ -209,52 +216,131 @@
         /* Home Section */
         .home-section {
             background: var(--color-smoky-black);
+            padding: var(--spacing-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
         .home-card {
             background: var(--color-smoky-black);
-            border: 4px solid var(--color-white);
+            border: 4px solid #FEF5F5;
             border-radius: var(--border-radius-xl);
-            padding: var(--spacing-2xl) var(--spacing-xl);
+            padding: 0;
             position: relative;
-            overflow: hidden;
-            max-width: 600px;
+            overflow: visible;
+            width: 85%;
+            max-width: 1100px;
+            aspect-ratio: 5/3;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
         }
 
+        /* Second card (middle layer) - 34px spacing from main card */
         .home-card::before {
             content: '';
             position: absolute;
-            top: 16px;
-            left: 16px;
-            right: 16px;
-            bottom: 16px;
-            border: 2px solid var(--color-white);
-            border-radius: calc(var(--border-radius-xl) - 8px);
-            pointer-events: none;
+            top: 34px;
+            left: 34px;
+            right: -34px;
+            bottom: -34px;
+            background: transparent;
+            border: 4px solid #C7C2C2;
+            border-radius: var(--border-radius-xl);
+            z-index: -1;
         }
 
+        /* Third card (back layer) - 68px spacing from main card (34px from second card) */
         .home-card::after {
             content: '';
             position: absolute;
-            top: 32px;
-            left: 32px;
-            right: 32px;
-            bottom: 32px;
-            border: 1px solid var(--color-white);
-            border-radius: calc(var(--border-radius-xl) - 16px);
-            pointer-events: none;
+            top: 68px;
+            left: 68px;
+            right: -68px;
+            bottom: -68px;
+            background: transparent;
+            border: 4px solid #868686;
+            border-radius: var(--border-radius-xl);
+            z-index: -2;
+        }
+
+        /* Navigation seamlessly integrated into card top - increased spacing */
+        .home-nav {
+            background: transparent;
+            border: none;
+            margin: 90px var(--spacing-xl) 0;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .home-nav .nav-list {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+        }
+
+        .home-nav .nav-link {
+            font-family: 'Jost', 'Arial', 'Helvetica', sans-serif !important;
+            color: #868686;
+            text-decoration: none;
+            font-weight: 400;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            transition: all var(--transition-normal);
+            text-transform: lowercase;
+            font-size: var(--font-size-base);
+        }
+
+        .home-nav .nav-link.active.home {
+            color: var(--color-white);
+        }
+
+        .home-nav .nav-link.active.about {
+            color: var(--color-bittersweet);
+        }
+
+        .home-nav .nav-link.active.works {
+            color: var(--color-sunglow);
+        }
+
+        .home-nav .nav-link.active.resume {
+            color: var(--color-yellow-green);
+        }
+
+        .home-nav .nav-link.active.contact {
+            color: var(--color-chrysler-blue);
+        }
+
+        .home-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-2xl);
+            position: relative;
+            z-index: 1;
+            min-height: 0;
         }
 
         .main-title {
             font-family: 'Libre Caslon Text', 'Georgia', 'Times New Roman', serif !important;
-            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 400;
-            margin-bottom: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
             position: relative;
             z-index: 1;
             color: var(--color-white);
             text-align: center;
+            line-height: 1.1;
         }
 
         .name-first {
@@ -273,14 +359,14 @@
             display: flex;
             justify-content: center;
             gap: var(--spacing-lg);
-            margin-top: var(--spacing-2xl);
+            margin-top: var(--spacing-xl);
             position: relative;
             z-index: 1;
         }
 
         .social-link {
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -355,7 +441,7 @@
             border-radius: var(--border-radius-lg);
             padding: var(--spacing-2xl);
             text-align: left;
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -395,7 +481,7 @@
         }
 
         .works-content {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
@@ -473,7 +559,7 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: var(--spacing-xl);
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -556,7 +642,7 @@
             border: 4px solid var(--color-chrysler-blue);
             border-radius: var(--border-radius-lg);
             padding: var(--spacing-2xl);
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -606,28 +692,31 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-container {
-                padding: var(--spacing-sm) 0;
+                padding: var(--spacing-xs) var(--spacing-sm);
+                top: var(--spacing-sm);
             }
             
             .nav-list {
-                gap: var(--spacing-md);
+                gap: var(--spacing-sm);
             }
             
             .nav-link {
-                padding: var(--spacing-xs) var(--spacing-sm);
+                padding: var(--spacing-xs);
                 font-size: var(--font-size-sm);
             }
 
-            .page-container {
-                margin-top: 80px;
-            }
-
             .section {
-                padding: var(--spacing-xl) var(--spacing-md);
+                padding: var(--spacing-lg) var(--spacing-sm);
             }
 
             .home-card {
-                padding: var(--spacing-xl) var(--spacing-lg);
+                padding: var(--spacing-xl) var(--spacing-md);
+                min-height: 70vh;
+                margin: var(--spacing-sm);
+            }
+
+            .main-title {
+                margin-bottom: var(--spacing-xl);
             }
 
             .social-links {
@@ -635,8 +724,8 @@
             }
 
             .social-link {
-                width: 48px;
-                height: 48px;
+                width: 56px;
+                height: 56px;
                 font-size: var(--font-size-lg);
             }
 
@@ -650,10 +739,12 @@
             .resume-sidebar,
             .resume-main {
                 padding: var(--spacing-lg);
+                margin: 0 var(--spacing-sm);
             }
 
             .project-card {
                 padding: var(--spacing-lg);
+                margin: 0 var(--spacing-sm) var(--spacing-lg) var(--spacing-sm);
             }
 
             .section-title {
@@ -663,7 +754,7 @@
 
         @media (max-width: 480px) {
             .nav-list {
-                gap: var(--spacing-sm);
+                gap: var(--spacing-xs);
             }
 
             .nav-link {
@@ -671,29 +762,52 @@
                 font-size: var(--font-size-sm);
             }
 
-            .page-container {
-                margin-top: 70px;
+            .section {
+                padding: var(--spacing-md) var(--spacing-xs);
             }
 
-            .section {
-                padding: var(--spacing-lg) var(--spacing-sm);
+            .home-section {
+                padding: var(--spacing-xs);
+            }
+
+            .home-card {
+                width: 98%;
+                aspect-ratio: 3/4;
+            }
+
+            .home-card::before {
+                top: 20px;
+                left: 20px;
+                right: -20px;
+                bottom: -20px;
+            }
+
+            .home-card::after {
+                top: 40px;
+                left: 40px;
+                right: -40px;
+                bottom: -40px;
+            }
+
+            .home-nav {
+                margin: 45px var(--spacing-sm) 0;
+            }
+
+            .home-nav .nav-list {
+                gap: var(--spacing-xs);
+            }
+
+            .home-content {
+                padding: var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
             }
 
             .main-title {
                 margin-bottom: var(--spacing-lg);
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
             }
 
             .section-title {
                 margin-bottom: var(--spacing-lg);
-            }
-
-            .home-card {
-                padding: var(--spacing-lg);
-            }
-
-            .home-card::before,
-            .home-card::after {
-                display: none;
             }
 
             .social-links {
@@ -701,14 +815,16 @@
             }
 
             .social-link {
-                width: 44px;
-                height: 44px;
+                width: 45px;
+                height: 45px;
+                font-size: var(--font-size-base);
             }
 
             .about-content,
             .contact-content,
             .project-card {
                 padding: var(--spacing-md);
+                margin: 0 var(--spacing-xs) var(--spacing-md) var(--spacing-xs);
             }
 
             .works-content {
@@ -793,32 +909,46 @@
         <section id="home" class="section home-section" aria-label="Introduction">
             <div class="section-content">
                 <div class="home-card">
-                    <h1 class="main-title">
-                        <span class="name-first">Vaanee</span>
-                        <span class="name-last">Tripathi</span>
-                    </h1>
+                    <!-- Navigation seamlessly integrated into home card -->
+                    <nav class="home-nav" aria-label="Main navigation">
+                        <ul class="nav-list" role="list">
+                            <li><a href="#home" class="nav-link active home" aria-current="page">home</a></li>
+                            <li><a href="#about" class="nav-link about">about</a></li>
+                            <li><a href="#works" class="nav-link works">works&projects</a></li>
+                            <li><a href="#resume" class="nav-link resume">resume</a></li>
+                            <li><a href="#contact" class="nav-link contact">contact</a></li>
+                        </ul>
+                    </nav>
                     
-                    <div class="social-links" role="list" aria-label="Social media and contact links">
-                        <a href="#resume" class="social-link download" aria-label="Download resume" title="Download Resume">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/vaaneetripathi" class="social-link github" aria-label="GitHub profile" title="GitHub" target="_blank" rel="noopener noreferrer">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com/in/vaaneetripathi" class="social-link linkedin" aria-label="LinkedIn profile" title="LinkedIn" target="_blank" rel="noopener noreferrer">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
-                            </svg>
-                        </a>
-                        <a href="mailto:vaanee.tripathi.ug25@ashoka.edu.in" class="social-link email" aria-label="Send email" title="Email">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
-                            </svg>
-                        </a>
+                    <!-- Main content area -->
+                    <div class="home-content">
+                        <h1 class="main-title">
+                            <span class="name-first">Vaanee</span>
+                            <span class="name-last">Tripathi</span>
+                        </h1>
+                        
+                        <div class="social-links" role="list" aria-label="Social media and contact links">
+                            <a href="#resume" class="social-link download" aria-label="Download resume" title="Download Resume">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/vaaneetripathi" class="social-link github" aria-label="GitHub profile" title="GitHub" target="_blank" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z"/>
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com/in/vaaneetripathi" class="social-link linkedin" aria-label="LinkedIn profile" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
+                                </svg>
+                            </a>
+                            <a href="mailto:vaanee.tripathi.ug25@ashoka.edu.in" class="social-link email" aria-label="Send email" title="Email">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1047,8 +1177,37 @@
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('.section');
+            const navContainer = document.querySelector('.nav-container');
             
-            // Handle navigation clicks
+            // Handle navigation clicks for both nav bars
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update active navigation state for both nav bars
+                        const allNavLinks = document.querySelectorAll('.nav-link');
+                        allNavLinks.forEach(nav => {
+                            nav.classList.remove('active');
+                            nav.removeAttribute('aria-current');
+                        });
+                        
+                        // Set active state for corresponding links in both navs
+                        const correspondingLinks = document.querySelectorAll(`[href="#${targetId}"]`);
+                        correspondingLinks.forEach(navLink => {
+                            navLink.classList.add('active');
+                            navLink.setAttribute('aria-current', 'page');
+                        });
+                    }
+                });
+            });
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1072,7 +1231,7 @@
                 });
             });
 
-            // Intersection Observer for active navigation states
+            // Intersection Observer for active navigation states and nav styling
             const observerOptions = {
                 root: null,
                 rootMargin: '-20% 0% -80% 0%',
@@ -1084,7 +1243,16 @@
                     if (entry.isIntersecting) {
                         const sectionId = entry.target.getAttribute('id');
                         const correspondingNav = document.querySelector(`[href="#${sectionId}"]`);
+                        const correspondingHomeNav = document.querySelector(`.home-nav [href="#${sectionId}"]`);
                         
+                        // Update nav styling based on section
+                        if (sectionId === 'home') {
+                            navContainer.classList.add('on-home');
+                        } else {
+                            navContainer.classList.remove('on-home');
+                        }
+                        
+                        // Update both navigation bars
                         if (correspondingNav) {
                             navLinks.forEach(nav => {
                                 nav.classList.remove('active');
@@ -1092,6 +1260,16 @@
                             });
                             correspondingNav.classList.add('active');
                             correspondingNav.setAttribute('aria-current', 'page');
+                        }
+                        
+                        if (correspondingHomeNav) {
+                            const homeNavLinks = document.querySelectorAll('.home-nav .nav-link');
+                            homeNavLinks.forEach(nav => {
+                                nav.classList.remove('active');
+                                nav.removeAttribute('aria-current');
+                            });
+                            correspondingHomeNav.classList.add('active');
+                            correspondingHomeNav.setAttribute('aria-current', 'page');
                         }
                     }
                 });
