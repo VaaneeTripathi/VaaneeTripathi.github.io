@@ -36,7 +36,7 @@
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 1.5rem;
-            --spacing-lg: 2rem;
+            --spacing-lg: 1rem;
             --spacing-xl: 3rem;
             --spacing-2xl: 4rem;
             
@@ -61,7 +61,7 @@
             }
 
             .home-nav .nav-list {
-                gap: var(--spacing-xs);
+                gap: var(--spacing-xl);
                 row-gap: var(--spacing-xs);
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -307,7 +307,7 @@
         .home-nav {
             background: transparent;
             border: none;
-            margin: 90px var(--spacing-xl) 0;
+            margin: 130px var(--spacing-xl) 0;
             padding: 0;
             z-index: 10;
         }
@@ -373,7 +373,7 @@
             font-family: 'Libre Caslon Text', 'Georgia', 'Times New Roman', serif !important;
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 400;
-            margin-bottom: var(--spacing-2xl);
+            margin-bottom: var(--spacing-5xl);
             position: relative;
             z-index: 1;
             color: var(--color-white);
@@ -398,6 +398,7 @@
             justify-content: center;
             gap: var(--spacing-lg);
             margin-top: var(--spacing-xl);
+            margin-bottom: 10px;
             position: relative;
             z-index: 1;
         }
@@ -743,7 +744,7 @@
         /* Medium screens - tablet landscape */
         @media (max-width: 900px) {
             .home-nav {
-                margin: 70px var(--spacing-lg) var(--spacing-lg);
+                margin: 100px var(--spacing-lg) var(--spacing-lg);
             }
 
             .home-nav .nav-list {
@@ -860,7 +861,7 @@
             }
 
             .home-nav {
-                margin: 45px var(--spacing-sm) var(--spacing-md);
+                margin: 75px var(--spacing-sm) var(--spacing-md);
             }
 
             .home-nav .nav-list {
