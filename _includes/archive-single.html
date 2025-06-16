@@ -53,9 +53,12 @@
     {% endif %}
 
     {% if post.citation and post.paperurl and post.slidesurl and post.bibtexurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a> | <a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
+      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a>
+      <a href="{{ post.slidesurl }}">Download Slides</a>
+      <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
     {% elsif post.citation and post.paperurl and post.slidesurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a> | <a href="{{ post.slidesurl }}">Download Slides</a></p>
+      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a>
+      <a href="{{ post.slidesurl }}">Download Slides</a></p>
     {% elsif post.citation and post.paperurl and post.bibtexurl and post.codeartefact and post.localpdf %}
       <p>recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a>    <a href="{{ post.codeartefact }}"><i class="fab fa-fw fa-github zoom" aria-hidden="true"></i></a>
     <a href="{{ post.bibtexurl }}"><i class='fas fa-fw fa-quote-right zoom' aria-hidden='true'></i></a>
@@ -64,11 +67,13 @@
       <p>recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a>    <a href="{{ post.codeartefact }}"><i class="fab fa-fw fa-github zoom" aria-hidden="true"></i></a>
     <a href="{{ post.bibtexurl }}"><i class='fas fa-fw fa-quote-right zoom' aria-hidden='true'></i></a></p>
     {% elsif post.citation and post.paperurl and post.bibtexurl %}
-    <p>recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a> | <a href="{{ post.bibtexurl }}">Download bibtex</a></p>
+    <p>recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a>
+     <a href="{{ post.bibtexurl }}">Download bibtex</a></p>
     {% elsif post.citation and post.paperurl %}
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}"><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a></p>
     {% elsif post.citation and post.slidesurl and post.bibtexurl %}
-      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl}}">Download Bibtex</a></p>
+      <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Download Slides</a>
+      <a href="{{ post.bibtexurl}}">Download Bibtex</a></p>
     {% elsif post.citation and post.slidesurl %}
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Download Slides</a></p>
     {% elsif post.citation and post.bibtexurl %}
@@ -76,11 +81,13 @@
     {% elsif post.citation %}
       <p>Recommended citation: {{ post.citation }}</p>
     {% elsif post.paperurl and post.bibtexurl %}
-      <p><a href=" {{ post.paperurl }} "><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
+      <p><a href=" {{ post.paperurl }} "><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a>
+      <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
     {% elsif post.paperurl %}
       <p><a href=" {{ post.paperurl }} "><i class='fas fa-fw fa-link zoom' aria-hidden='true'></i></a></p>
     {% elsif post.slidesurl and post.bibtexurl %}
-      <p><a href="{{ post.slidesurl }}">Download Slides</a> | <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
+      <p><a href="{{ post.slidesurl }}">Download Slides</a>
+      <a href="{{ post.bibtexurl }}">Download Bibtex</a></p>
     {% elsif post.slidesurl %}
       <p><a href="{{ post.slidesurl }}">Download Slides</a></p>
     {% elsif post.bibtexurl %}
